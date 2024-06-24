@@ -6,7 +6,7 @@ import { derivePath } from 'ed25519-hd-key';
 export function getWallet(wallet: string): Keypair {
   // most likely someone pasted the private key in binary format
   if (wallet.startsWith('[')) {
-    return Keypair.fromSecretKey(JSON.parse(wallet));
+    return Keypair.fromSecretKey(new Uint8Array(JSON.parse(wallet)));
   }
 
   // most likely someone pasted mnemonic
